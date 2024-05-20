@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Dog Finder</string>
+
+
+    <!-- Home -->
+    <string name="adoptame">Adoptame</string>
+    <string name="textView_members">Integrantes</string>
+    <string name="textView_aboutUs">Sobre Nosotros</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="black2">#121211</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="grey">#E9E9E9</color>
+
+    <!-- home -->
+    <color name="orange">#E87E06</color>
+    <color name="mostaza">#ECB30E</color>
+    <color name="gris_azulado">#D4DDDF</color>
+    <color name="gris_claro">#D5D5D5</color>
+</resources>
