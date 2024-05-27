@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".RandomDogActivity">
+    tools:context=".ui.random.presenter.RandomDogActivity">
 
     <!-- Title AboutUsActivity -->
     <LinearLayout
@@ -85,7 +85,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/dog7" />
+            app:srcCompat="@drawable/dog_predeterminado" />
     </androidx.cardview.widget.CardView>
 
     <!-- Botón de retorno -->

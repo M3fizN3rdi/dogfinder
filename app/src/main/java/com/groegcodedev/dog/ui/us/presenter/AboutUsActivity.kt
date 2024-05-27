@@ -1,4 +1,4 @@
-package com.groegcodedev.dog
+package com.groegcodedev.dog.ui.us.presenter
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,7 +7,11 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.groegcodedev.dog.R
 import com.groegcodedev.dog.databinding.ActivityAboutUsBinding
+import com.groegcodedev.dog.ui.home.presenter.HomeActivity
+import com.groegcodedev.dog.ui.us.adapter.AboutUsAdapter
+import com.groegcodedev.dog.ui.us.adapter.MembersAdapter
 
 class AboutUsActivity : AppCompatActivity() {
 

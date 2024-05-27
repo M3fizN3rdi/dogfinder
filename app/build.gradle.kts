@@ -49,11 +49,20 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    // RecyclerView
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    // ViewModel y LiveData
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
 
-    // Picasso
+    // Otras dependencias necesarias
+    implementation ("androidx.fragment:fragment-ktx:1.5.1")
+
+    //picasso
     implementation("com.squareup.picasso:picasso:2.71828")
 
+    //retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.7.2")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 
 }

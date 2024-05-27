@@ -1,10 +1,11 @@
-package com.groegcodedev.dog
+package com.groegcodedev.dog.ui.us.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.groegcodedev.dog.R
 
 class MembersAdapter(
     private val membersList: ArrayList<Member> // Lista de miembros a mostrar en el RecyclerView

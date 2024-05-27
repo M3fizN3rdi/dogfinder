@@ -1,4 +1,4 @@
-package com.groegcodedev.dog
+package com.groegcodedev.dog.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.groegcodedev.dog.R
 
 class CircleButtonAdapter(
     private val items: List<CircleButtonItem>, // Lista de ítems con iconos y textos

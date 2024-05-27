@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".RandomDogActivity">
+    tools:context=".ui.random.presenter.RandomDogActivity">
 
     <!-- Title AboutUsActivity -->
     <LinearLayout
@@ -49,54 +49,73 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/search_random"
+        android:id="@+id/ic_search_random"
         android:layout_width="50dp"
         android:layout_height="54dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:src="@drawable/ic_footprint"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_paw"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_about_us" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_width="343dp"
+        android:layout_height="443dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
         app:cardBackgroundColor="@color/orange"
         app:cardCornerRadius="20dp"
-        app:cardElevation="4dp"
+        app:cardElevation="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_random">
+        app:layout_constraintTop_toBottomOf="@+id/ic_search_random">
 
         <!-- ImageView para mostrar la imagen del perro -->
         <ImageView
             android:id="@+id/imageView_randomActivity"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:src="@drawable/dog_predeterminado"
             android:scaleType="centerCrop"
+            android:elevation="3dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/dog7" />
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_end"
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8">
+    </androidx.constraintlayout.widget.Guideline>
 
     <!-- Botón de retorno -->
     <ImageView
         android:id="@+id/return_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:src="@drawable/ic_button_return"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/gl_end" />
 
+    <RelativeLayout
+        android:id="@+id/loading_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#48000000"
+        android:gravity="center"
+        android:visibility="gone">
 
+        <ProgressBar
+            android:layout_width="150dp"
+            android:layout_height="150dp" />
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

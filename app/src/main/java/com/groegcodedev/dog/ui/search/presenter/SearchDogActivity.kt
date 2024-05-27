@@ -1,17 +1,18 @@
-package com.groegcodedev.dog
+package com.groegcodedev.dog.ui.search.presenter
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.groegcodedev.dog.databinding.ActivityRandomDogBinding
+import com.groegcodedev.dog.databinding.ActivitySearchDogBinding
+import com.groegcodedev.dog.ui.home.presenter.HomeActivity
 
-class RandomDogActivity : AppCompatActivity() {
+class SearchDogActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityRandomDogBinding
+    lateinit var binding: ActivitySearchDogBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRandomDogBinding.inflate(layoutInflater)
+        binding = ActivitySearchDogBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.returnButton.setOnClickListener {
@@ -19,7 +20,6 @@ class RandomDogActivity : AppCompatActivity() {
             startActivity(intent)
             finish() // Opcional: cierra la actividad actual si no quieres que permanezca en el backstack
         }
-
 
     }
 }

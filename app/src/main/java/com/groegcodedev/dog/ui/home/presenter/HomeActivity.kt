@@ -1,35 +1,86 @@
-package com.groegcodedev.dog
+package com.groegcodedev.dog.ui.home.presenter
 
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSnapHelper
-import androidx.recyclerview.widget.RecyclerView
+import com.groegcodedev.dog.ui.us.presenter.AboutUsActivity
+import com.groegcodedev.dog.ui.details.presenter.DetailsDogActivity
+import com.groegcodedev.dog.R
+import com.groegcodedev.dog.ui.random.presenter.RandomDogActivity
+import com.groegcodedev.dog.ui.search.presenter.SearchDogActivity
 import com.groegcodedev.dog.databinding.ActivityHomeBinding
+import com.groegcodedev.dog.ui.gridfinder.presenter.GridDogActivity
+import com.groegcodedev.dog.ui.home.adapter.CircleButtonAdapter
+import com.groegcodedev.dog.ui.home.adapter.DogsAdapter
+import com.groegcodedev.dog.ui.home.viewmodel.DogViewModel
+import com.groegcodedev.dog.ui.home.viewmodel.StateViewModel
 
 class HomeActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityHomeBinding // Accede a las vistas en el layout
-    private lateinit var dogAdapter: DogAdapter // Adapter para el RecyclerView de perros
-    private val dogList = ArrayList<DogAdapter.Dog>() // Lista para almacenar los datos de los perros
+
+    private val viewModel by viewModels<DogViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Inicializa el binding inflando el layout
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        // Forzar el tema claro en la aplicacion
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO) // Forzar el tema claro en la aplicacion
 
         setupCircleButtons() // Configura los botones circulares
-        setupDogRecyclerView() // Configura el RecyclerView de perros
+        call()
+        observer()
     }
 
+    private fun call() {
+        viewModel.getDogs()
+    }
+
+    private fun observer() {
+        viewModel.data.observe(this) { data ->
+            when (data) {
+                is StateViewModel.Success -> {
+                    hideLoading()
+                    initRecyclerView(
+                        data.info.message ?: listOf("https://images.dog.ceo/breeds/terrier-welsh/lucy.jpg")
+                    )
+                }
+                is StateViewModel.Loading -> {
+                    showLoading()
+                }
+
+                is StateViewModel.Error -> {
+
+                }
+            }
+        }
+        viewModel.getImage().observe(this) {
+            navigateToImageDetails()
+        }
+    }
+
+    private fun showLoading() {
+        binding.loadingScreen.visibility = View.VISIBLE
+    }
+
+    private fun hideLoading() {
+        binding.loadingScreen.visibility = View.GONE
+    }
+
+    private fun initRecyclerView(value: List<String>) {
+        val adapter = DogsAdapter(value, viewModel::onImageClicked)
+        binding.rvDogHome.adapter = adapter
+    }
+
+
+    private fun navigateToImageDetails() {
+        val intent = Intent(this, DetailsDogActivity::class.java)
+        startActivity(intent)
+    }
 
     /**
      * Configura el RecyclerView que muestra los botones circulares.
@@ -64,7 +115,7 @@ class HomeActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             "Perritos" -> {
-                val intent = Intent(this, FurryFriendsActivity::class.java)
+                val intent = Intent(this, GridDogActivity::class.java)
                 startActivity(intent)
             }
             "Nosotros" -> {
@@ -78,34 +129,6 @@ class HomeActivity : AppCompatActivity() {
             else -> {
 
             }
-        }
-    }
-
-    /**
-     * Configura el RecyclerView que muestra la lista de perros.
-     * Utiliza un LinearLayoutManager en orientación horizontal.
-     * Asigna un adaptador con la lista de perros.
-     * Configura un LinearSnapHelper para alinear los elementos en el centro al deslizar.
-     */
-    private fun setupDogRecyclerView() {
-        binding.rvDog.apply {
-            setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(this@HomeActivity, RecyclerView.HORIZONTAL, false)
-            LinearSnapHelper().attachToRecyclerView(this)
-            adapter = DogAdapter(dogList)
-        }
-        populateDogList() // Agrega datos a la lista de perros
-    }
-
-    /**
-     * Llena la lista de perros con datos iniciales.
-     * Agrega tres elementos de muestra a la lista.
-     */
-    private fun populateDogList() {
-        dogList.apply {
-            add(DogAdapter.Dog(R.drawable.dog2))
-            add(DogAdapter.Dog(R.drawable.dog3))
-            add(DogAdapter.Dog(R.drawable.dog7))
         }
     }
 }

@@ -1,10 +1,11 @@
-package com.groegcodedev.dog
+package com.groegcodedev.dog.ui.us.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.groegcodedev.dog.R
 
 class AboutUsAdapter(
     private val aboutUsList: ArrayList<AboutUs> // Lista de elementos "Acerca de Nosotros" a mostrar en el RecyclerView
